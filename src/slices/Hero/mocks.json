@@ -1,0 +1,42 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Feature Skateboards",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Reprehenderit non adipisicing aliquip esse in qui laborum. Qui magna ut sunt in laborum eiusmod minim. Do minim aute nulla adipisicing."
+						}
+					}
+				]
+			},
+			"button": {
+				"key": "775ebcc0-7a63-4afc-9e24-e8837265e878",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "home"
+				}
+			}
+		},
+		"items": []
+	}
+]
