@@ -6,7 +6,7 @@ import {
   ContactShadows,
   Environment,
   Html,
-  OrbitControls,
+  // OrbitControls,
 } from "@react-three/drei";
 import { Canvas, ThreeEvent, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";

@@ -5,6 +5,7 @@ import { Bowlby_One_SC, DM_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { SVGFilters } from "@/components/SVGFilters";
 import { Footer } from "@/components/Footer";
+import { createClient } from "@/prismicio";
 
 const bowlby = Bowlby_One_SC({
   subsets: ["latin"],
@@ -29,10 +30,23 @@ const dmMono = DM_Mono({
 //   subsets: ["latin"],
 // });
 
-export const metadata: Metadata = {
-  title: "Shan Skateboard Site",
-  description: "Create your own skateboards",
-};
+// export const metadata: Metadata = {
+//   title: "Shan Skateboard Site",
+//   description: "Create your own skateboards",
+// };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const settings = await client.getSingle("settings");
+
+  return {
+    title: settings.data.site_title,
+    description: settings.data.meta_description,
+    openGraph: {
+      images: settings.data.fallback_og_image.url ?? undefined,
+    },
+  };
+}
 
 export default function RootLayout({
   children,
