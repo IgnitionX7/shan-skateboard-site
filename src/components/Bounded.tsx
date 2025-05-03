@@ -55,29 +55,25 @@
 //   );
 // }
 // ------------------
-import React, { ElementType, PropsWithChildren } from "react";
+import { CSSProperties, ElementType, PropsWithChildren } from "react";
 import clsx from "clsx";
 
-type BoundedProps<T extends ElementType> = {
-  as?: T;
+type BoundedProps = PropsWithChildren<{
+  as?: ElementType;
   className?: string;
-} & React.ComponentPropsWithoutRef<T>;
+  style?: CSSProperties;
+}>;
 
-export function Bounded<T extends ElementType = "section">({
-  as: Comp = "section" as T, // Default to "section" but assert type T
-  className,
-  children,
-  ...restProps
-}: PropsWithChildren<BoundedProps<T>>) {
+export function Bounded({ className, children, ...restProps }: BoundedProps) {
   return (
-    <Comp
+    <section
       className={clsx(
         "px-6 py-10 sm:py-12 md:py-16 [.header+&]:pt-44 md:[.header+&]:pt-32",
         className
       )}
-      {...(restProps as React.ComponentPropsWithoutRef<T>)}
+      {...restProps}
     >
       <div className="mx-auto w-full max-w-6xl">{children}</div>
-    </Comp>
+    </section>
   );
 }
