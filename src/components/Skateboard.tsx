@@ -19,20 +19,37 @@ type SkateboardProps = {
   constantWheelSpin?: boolean;
 };
 
+// type GLTFResult = GLTF & {
+//   nodes: {
+//     GripTape: THREE.Mesh;
+//     Wheel1: THREE.Mesh;
+//     Wheel2: THREE.Mesh;
+//     Deck: THREE.Mesh;
+//     Wheel4: THREE.Mesh;
+//     Bolts: THREE.Mesh;
+//     Wheel3: THREE.Mesh;
+//     Baseplates: THREE.Mesh;
+//     Truck1: THREE.Mesh;
+//     Truck2: THREE.Mesh;
+//   };
+//   materials: object;
+// };
 type GLTFResult = GLTF & {
   nodes: {
-    GripTape: THREE.Mesh;
-    Wheel1: THREE.Mesh;
-    Wheel2: THREE.Mesh;
-    Deck: THREE.Mesh;
-    Wheel4: THREE.Mesh;
-    Bolts: THREE.Mesh;
-    Wheel3: THREE.Mesh;
-    Baseplates: THREE.Mesh;
-    Truck1: THREE.Mesh;
-    Truck2: THREE.Mesh;
+    GripTape: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
+    Wheel1: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
+    Wheel2: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
+    Deck: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
+    Wheel4: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
+    Bolts: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
+    Wheel3: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
+    Baseplates: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
+    Truck1: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
+    Truck2: THREE.Mesh<THREE.BufferGeometry, THREE.Material>;
   };
-  materials: {};
+  materials: {
+    [key: string]: THREE.Material;
+  };
 };
 
 export function Skateboard({
@@ -46,7 +63,8 @@ export function Skateboard({
 }: SkateboardProps) {
   const wheelRefs = useRef<THREE.Object3D[]>([]);
 
-  const { nodes } = useGLTF("/skateboard.gltf") as GLTFResult;
+  // const { nodes } = useGLTF("/skateboard.gltf") as GLTFResult;
+  const { nodes } = useGLTF("/skateboard.gltf") as unknown as GLTFResult;
 
   // Wheel Textures
   const wheelTextures = useTexture(wheelTextureURLs);
